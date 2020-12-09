@@ -3,9 +3,37 @@
 }
 
 body, html {
-    margin: 0;
-    padding: 0;
+
     height: 100%;
     width: 100%;
     font-family: sans-serif;
 }
+.section1, .section2 {
+    border: 1px solid red;
+    width: auto;
+    padding-left: 10px;
+
+}
+main {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.section2 {
+    grid-row: 2;
+}
+
+.section3{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.section4 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
