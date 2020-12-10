@@ -13,21 +13,21 @@
     <main>
         <section class= "section1">
            <h3>Please Enter Your Budget</h3>
-           <input class= "budget"/>
-           <button class= "button1">Calculate</button>
+           <input class= "budget" id= "budget-input" type= "number"/>
+           <button class= "button1" id= "budget-button">Calculate</button>
         </section>
         <section class= "section2">
-            <h3>Please Enter Your Expense</h3>
-            <input class ="expense"/>
+            <h3>Enter name of expense</h3>
+            <input class ="expense" id= "item"/>
             <h3>Please Enter Expense Amount</h3>
-            <input class= "amount"/>
-            <button class= "button1">Add Expense</button>
+            <input class= "amount" id= "amount" type= "number"/>
+            <button class= "button1" id= "button1">Add Expense</button>
         </section>
         <section class= "section3">
             <div>
                 <h3>Budget</h3>
                 <i class="fas fa-money-bill-alt"></i>
-                <p>$</p>
+                <p id= "budget-output">$</p>
             </div>
             <div>
                 <h3>Expenses</h3>
@@ -47,7 +47,7 @@
             <div>
                 <h4>Expense Title</h4>
                 <ul>
-                    <li></li>
+                    <li id= "expense-title"></li>
                 </ul>
                 
 
@@ -55,7 +55,7 @@
             <div>
                 <h4>Expense Value</h4>
                 <ul>
-                    <li></li>
+                    <li id= "expense-value"></li>
                 </ul>
 
             </div>
