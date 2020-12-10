@@ -37,3 +37,27 @@ main {
     align-items: center;
 }
 
+.fa-trash-alt {
+    color: red;
+}
+
+.fa-money-bill-alt {
+    display:flex;
+    font-size: 56px;
+    color: rgb(47, 72, 79);
+    justify-content: center;
+}
+
+.fa-credit-card {
+    display:flex;
+    font-size: 56px;
+    color: rgb(47, 72, 79);
+    justify-content: center;
+}
+
+.fa-dollar-sign {
+    display:flex;
+    font-size: 56px;
+    color: rgb(47, 72, 79);
+    justify-content: center;
+}
