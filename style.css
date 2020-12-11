@@ -7,6 +7,7 @@ body, html {
     height: 100%;
     width: 100%;
     font-family: sans-serif;
+    
 }
 .section1, .section2 {
     border: 1px solid red;
@@ -19,6 +20,7 @@ main {
     grid-template-columns: 40% 60%;
     grid-template-rows: 1fr 1fr;
     grid-gap: 5px;
+    background-color: antiquewhite;
 }
 
 .section2 {
