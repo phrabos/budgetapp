@@ -61,3 +61,11 @@ main {
     color: rgb(47, 72, 79);
     justify-content: center;
 }
+#checkbox-section{
+    display: flex;
+    flex-direction: column;
+}
+.checkbox {
+   
+  
+}
