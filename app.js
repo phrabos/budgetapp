@@ -67,12 +67,11 @@ button1.addEventListener('click', () => {
   totalExpenseOutput.textContent = totalExpense
 
   //totalBalanceOutput.innerText = Number(budgetOutput) - Number(totalExpenseOutput);
-
-  const budgetTotal = budgetOutput.value;
-  const expenseTotal = totalExpenseOutput.value;
+  const budgetTotal = Number(budgetOutput.innerText);
+  const expenseTotal = Number(totalExpenseOutput.innerText);
   const result = budgetTotal - expenseTotal;
 
-  totalBalanceOutput.textContent = result;
+  totalBalanceOutput.innerText = result;
 
 });
 
