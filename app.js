@@ -1,4 +1,4 @@
-const budget= document.getElementById("budget-button");
+const budgetButton= document.getElementById("budget-button");
 const budgetInput= document.getElementById("budget-input");
 const budgetOutput= document.getElementById("budget-output");
 
@@ -24,7 +24,7 @@ const totalBalanceOutput = document.getElementById('total-balance-output');
 
 // event listeners for budget button
 
-budget.addEventListener('click', () => { 
+budgetButton.addEventListener('click', () => { 
 
     budgetOutput.textContent =  Number(budgetInput.value)
 });
@@ -77,7 +77,7 @@ button1.addEventListener('click', () => {
 
 
 
-// // Delete line items and trash icon event listener
+//Delete line items and trash icon event listener
 // deleteTrash.addEventListener('click', () => { 
 // document.removeChild('itemOutput');
 
