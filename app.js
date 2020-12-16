@@ -29,7 +29,7 @@ const totalBalanceOutput = document.getElementById('total-balance-output');
 
 budgetButton.addEventListener('click', () => { 
 
-    budgetOutput.textContent =  Number(budgetInput.value)
+    budgetOutput.textContent =  Number(budgetInput.value);
 });
 
 
@@ -44,7 +44,7 @@ expenseButton.addEventListener('click', () => {
   
   // List items for amount output
   const listItemTwo= document.createElement("li");
-  listItemTwo.textContent= Number(amountInput.value);
+  listItemTwo.textContent= `$${Number(amountInput.value)}`;
   amountOutput.appendChild(listItemTwo);
 
   // Checkbox 
@@ -56,8 +56,6 @@ expenseButton.addEventListener('click', () => {
   //Trash icon
   const trash=document.createElement("i");
   trash.className=("fas fa-trash-alt");
-  
-
   trashIcon.appendChild(trash);
 
   // Adding amounts to the expense array 
@@ -68,14 +66,14 @@ expenseButton.addEventListener('click', () => {
     
   });
 
-  totalExpenseOutput.textContent = totalExpense
+  totalExpenseOutput.textContent = Number(totalExpense);
 
-  //totalBalanceOutput.innerText = Number(budgetOutput) - Number(totalExpenseOutput);
-  const budgetTotal = Number(budgetOutput.innerText);
-  const expenseTotal = Number(totalExpenseOutput.innerText);
+  //totalBalanceOutput.textContent = Number(budgetOutput) - Number(totalExpenseOutput);
+  const budgetTotal = Number(budgetOutput.textContent);
+  const expenseTotal = Number(totalExpenseOutput.textContent);
   const result = budgetTotal - expenseTotal;
 
-  totalBalanceOutput.innerText = result;
+  totalBalanceOutput.textContent = result;
 
   
 
