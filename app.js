@@ -75,16 +75,17 @@ expenseButton.addEventListener('click', () => {
 
   totalBalanceOutput.textContent = result;
 
+  // Event listener - delete line items and delete trash icon
+ trash.addEventListener('click', () => { 
+  trashIcon.removeChild(trash); 
+  itemOutput.removeChild(listItem);
+  amountOutput.removeChild(listItemTwo);
   
+      });
 
 });
 
-// Event listener - delete line items and trash icon
-// deleteTrash.addEventListener('click', () => { 
-//   itemOutput.remove();
-  
-  
-//    });
+
 
 
 
