@@ -1,18 +1,21 @@
+// Budget Button Variables
 const budgetButton= document.getElementById("budget-button");
 const budgetInput= document.getElementById("budget-input");
 const budgetOutput= document.getElementById("budget-output");
 
-const expense= document.getElementById("item");
-const amount= document.getElementById("amount");
-const button1= document.getElementById("button1");
+// Expense Button Variables
+const itemInput= document.getElementById("item");
+const amountInput= document.getElementById("amount");
+const expenseButton= document.getElementById("expense-button");
 const itemOutput= document.getElementById("expense-title");
 const amountOutput= document.getElementById("expense-value");
 
+// Checkbox variable used to append new input element
 const checkboxSection =document.getElementById('checkbox-section');
 
 //Trash icon variables
 const trashIcon= document.getElementById('trash-can');
-const deleteTrash = document.getElementById('deleteTrash');
+const deleteTrash = document.querySelector(".fa-trash-alt");
 
 // Array to total all expense for expenses section
 const expenseArray = [];
@@ -31,34 +34,35 @@ budgetButton.addEventListener('click', () => {
 
 
 // Event listener for section three and four
-button1.addEventListener('click', () => { 
+expenseButton.addEventListener('click', () => { 
   
-  // List items for expense type
-  //itemOutput.textContent = expense.value;
-  //amountOutput.textContent = Number(amount.value);
+  // List items for expense name output
   const listItem= document.createElement("li");
-  listItem.textContent= expense.value;
+  listItem.textContent= itemInput.value;
   itemOutput.appendChild(listItem);
+
   
-  // List items for amount input
+  // List items for amount output
   const listItemTwo= document.createElement("li");
-  listItemTwo.textContent= Number(amount.value);
+  listItemTwo.textContent= Number(amountInput.value);
   amountOutput.appendChild(listItemTwo);
 
   // Checkbox 
-  const checkbox= document.createElement("input");
-  checkbox.type= "checkbox";
-  checkbox.className="checkbox";
-  checkboxSection.appendChild(checkbox);
+  // const checkbox= document.createElement("input");
+  // checkbox.type= "checkbox";
+  // checkbox.className="checkbox";
+  // checkboxSection.appendChild(checkbox);
 
   //Trash icon
   const trash=document.createElement("i");
-  trash.className="far fa-trash-alt";
-  trash.id = 'deleteTrash';
+  trash.className=("fas fa-trash-alt");
+  
+
   trashIcon.appendChild(trash);
 
   // Adding amounts to the expense array 
-  expenseArray.push(Number(amount.value));
+  expenseArray.push(Number(amountInput.value));
+
   totalExpense = expenseArray.reduce((accumulator, currentValue) => {
     return accumulator + currentValue
     
@@ -73,17 +77,18 @@ button1.addEventListener('click', () => {
 
   totalBalanceOutput.innerText = result;
 
+  
+
 });
 
-
-
-//Delete line items and trash icon event listener
+// Event listener - delete line items and trash icon
 // deleteTrash.addEventListener('click', () => { 
-// document.removeChild('itemOutput');
+//   itemOutput.remove();
+  
+  
+//    });
 
-// console.log("test")
 
-// });
 
 
 
