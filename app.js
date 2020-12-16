@@ -30,6 +30,7 @@ const totalBalanceOutput = document.getElementById('total-balance-output');
 budgetButton.addEventListener('click', () => { 
 
     budgetOutput.textContent =  Number(budgetInput.value);
+    budgetInput.value="";
 });
 
 
@@ -46,12 +47,6 @@ expenseButton.addEventListener('click', () => {
   const listItemTwo= document.createElement("li");
   listItemTwo.textContent= `$${Number(amountInput.value)}`;
   amountOutput.appendChild(listItemTwo);
-
-  // Checkbox 
-  // const checkbox= document.createElement("input");
-  // checkbox.type= "checkbox";
-  // checkbox.className="checkbox";
-  // checkboxSection.appendChild(checkbox);
 
   //Trash icon
   const trash=document.createElement("i");
@@ -82,6 +77,10 @@ expenseButton.addEventListener('click', () => {
   amountOutput.removeChild(listItemTwo);
   
       });
+
+  // reset inputs to empty strings
+  itemInput.value="";
+  amountInput.value="";    
 
 });
 
