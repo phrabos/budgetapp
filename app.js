@@ -64,19 +64,33 @@ expenseButton.addEventListener('click', () => {
   totalExpenseOutput.textContent = Number(totalExpense);
 
   //totalBalanceOutput.textContent = Number(budgetOutput) - Number(totalExpenseOutput);
-  const budgetTotal = Number(budgetOutput.textContent);
-  const expenseTotal = Number(totalExpenseOutput.textContent);
-  const result = budgetTotal - expenseTotal;
+  let budgetTotal = Number(budgetOutput.textContent);
+  let expenseTotal = Number(totalExpenseOutput.textContent);
+  let result = budgetTotal - expenseTotal;
 
   totalBalanceOutput.textContent = result;
 
   // Event listener - delete line items and delete trash icon
  trash.addEventListener('click', () => { 
-  trashIcon.removeChild(trash); 
-  itemOutput.removeChild(listItem);
-  amountOutput.removeChild(listItemTwo);
+    trashIcon.removeChild(trash); 
+    itemOutput.removeChild(listItem);
+    amountOutput.removeChild(listItemTwo);
   
-      });
+    // Removing amounts from the expense array 
+    expenseArray.pop(Number(listItemTwo.value));
+
+    totalExpense = 0
+    for (i=0; i<expenseArray.length; i++){
+      totalExpense += expenseArray[i];
+    }
+
+    totalExpenseOutput.textContent = Number(totalExpense);
+    let budgetTotal = Number(budgetOutput.textContent);
+    let expenseTotal = Number(totalExpenseOutput.textContent);
+    let result = budgetTotal - expenseTotal;
+
+  totalBalanceOutput.textContent = result;
+});
 
   // reset inputs to empty strings
   itemInput.value="";
