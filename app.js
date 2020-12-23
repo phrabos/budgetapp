@@ -21,6 +21,7 @@ const deleteTrash = document.querySelector(".fa-trash-alt");
 const expenseArray = [];
 let totalExpense = 0
 const totalExpenseOutput = document.getElementById('total-expense-output');
+let itemID = 0;
 
 //Balance total for budget - expense
 const totalBalanceOutput = document.getElementById('total-balance-output');
@@ -40,18 +41,18 @@ expenseButton.addEventListener('click', () => {
   // List items for expense name output
   const listItem= document.createElement("li");
   listItem.textContent= itemInput.value;
-  itemOutput.appendChild(listItem);
+  itemOutput.append(listItem);
 
   
   // List items for amount output
   const listItemTwo= document.createElement("li");
   listItemTwo.textContent= `$${Number(amountInput.value)}`;
-  amountOutput.appendChild(listItemTwo);
+  amountOutput.append(listItemTwo);
 
   //Trash icon
   const trash=document.createElement("i");
   trash.className=("fas fa-trash-alt");
-  trashIcon.appendChild(trash);
+  trashIcon.append(trash);
 
   // Adding amounts to the expense array 
   expenseArray.push(Number(amountInput.value));
@@ -69,12 +70,19 @@ expenseButton.addEventListener('click', () => {
   let result = budgetTotal - expenseTotal;
 
   totalBalanceOutput.textContent = result;
+  // Add amount to object (not working - trying to refactor on separate branch)
+    // let expenseObject = {
+    //   id: itemID,
+    //   title: itemInput.value,
+    //   amount: amountInput.value,
+    // };
+    // itemID ++;
 
   // Event listener - delete line items and delete trash icon
  trash.addEventListener('click', () => { 
-    trashIcon.removeChild(trash); 
-    itemOutput.removeChild(listItem);
-    amountOutput.removeChild(listItemTwo);
+    trash.remove(); 
+    listItem.remove();
+    listItemTwo.remove();
   
     // Removing amounts from the expense array 
     expenseArray.pop(Number(listItemTwo.value));
