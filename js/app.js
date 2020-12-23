@@ -1,21 +1,17 @@
 // Budget Button Variables
 const budgetButton= document.getElementById("budget-button");
-const budgetInput= document.getElementById("budget-input");
-const budgetOutput= document.getElementById("budget-output");
-
-// Expense Button Variables
-const itemInput= document.getElementById("item");
-const amountInput= document.getElementById("amount");
 const expenseButton= document.getElementById("expense-button");
-const itemOutput= document.getElementById("expense-title");
-const amountOutput= document.getElementById("expense-value");
+const trashIcon= document.getElementById('trash-can');
+//selectors
+
+// import functions
+
+import { budgetFunc } from "./functions.js";
 
 // Checkbox variable used to append new input element
-const checkboxSection =document.getElementById('checkbox-section');
 
 //Trash icon variables
-const trashIcon= document.getElementById('trash-can');
-const deleteTrash = document.querySelector(".fa-trash-alt");
+
 
 // Array to total all expense for expenses section
 const expenseArray = [];
@@ -29,9 +25,7 @@ const totalBalanceOutput = document.getElementById('total-balance-output');
 // event listeners for budget button
 
 budgetButton.addEventListener('click', () => { 
-
-    budgetOutput.textContent =  Number(budgetInput.value);
-    budgetInput.value="";
+  budgetFunc();
 });
 
 
