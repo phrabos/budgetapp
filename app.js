@@ -1,43 +1,39 @@
-// Budget Button Variables
-const budgetButton= document.getElementById("budget-button");
+
 const budgetInput= document.getElementById("budget-input");
 const budgetOutput= document.getElementById("budget-output");
-
-// Expense Button Variables
 const itemInput= document.getElementById("item");
-const amountInput= document.getElementById("amount");
-const expenseButton= document.getElementById("expense-button");
 const itemOutput= document.getElementById("expense-title");
+const amountInput= document.getElementById("amount");
 const amountOutput= document.getElementById("expense-value");
-
-// Checkbox variable used to append new input element
-const checkboxSection =document.getElementById('checkbox-section');
-
-//Trash icon variables
-const trashIcon= document.getElementById('trash-can');
-const deleteTrash = document.querySelector(".fa-trash-alt");
-
-// Array to total all expense for expenses section
-const expenseArray = [];
-let totalExpense = 0
 const totalExpenseOutput = document.getElementById('total-expense-output');
-let itemID = 0;
-
-//Balance total for budget - expense
 const totalBalanceOutput = document.getElementById('total-balance-output');
+let expenseArray = [];
+let totalExpense = 0;
+// Budget Button Variables
+const budgetButton= document.getElementById("budget-button");
+const expenseButton= document.getElementById("expense-button");
+const trashIcon= document.getElementById('trash-can');
 
-// event listeners for budget button
+// functions
+function calcBalance(){
+  //totalBalanceOutput.textContent = Number(budgetOutput) - Number(totalExpenseOutput);
+  let budgetTotal = Number(budgetOutput.textContent);
+  let expenseTotal = Number(totalExpenseOutput.textContent);
+  let result = budgetTotal - expenseTotal;
 
-budgetButton.addEventListener('click', () => { 
+  totalBalanceOutput.textContent = result;
+};
 
-    budgetOutput.textContent =  Number(budgetInput.value);
-    budgetInput.value="";
-});
+function calcExpenses(){
+  totalExpenseOutput.textContent = Number(totalExpense);
+};
 
+function budgetFunc() {
+  budgetOutput.textContent =  Number(budgetInput.value);
+  budgetInput.value="";  
+};
 
-// Event listener for section three and four
-expenseButton.addEventListener('click', () => { 
-  
+function addToExpenseList(){
   // List items for expense name output
   const listItem= document.createElement("li");
   listItem.textContent= itemInput.value;
@@ -54,61 +50,68 @@ expenseButton.addEventListener('click', () => {
   trash.className=("fas fa-trash-alt");
   trashIcon.append(trash);
 
-  // Adding amounts to the expense array 
-  expenseArray.push(Number(amountInput.value));
-
-  totalExpense = expenseArray.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue
-    
-  });
-
-  totalExpenseOutput.textContent = Number(totalExpense);
-
-  //totalBalanceOutput.textContent = Number(budgetOutput) - Number(totalExpenseOutput);
-  let budgetTotal = Number(budgetOutput.textContent);
-  let expenseTotal = Number(totalExpenseOutput.textContent);
-  let result = budgetTotal - expenseTotal;
-
-  totalBalanceOutput.textContent = result;
-  // Add amount to object (not working - trying to refactor on separate branch)
-    // let expenseObject = {
-    //   id: itemID,
-    //   title: itemInput.value,
-    //   amount: amountInput.value,
-    // };
-    // itemID ++;
-
-  // Event listener - delete line items and delete trash icon
- trash.addEventListener('click', () => { 
+  trash.addEventListener('click', () => { 
     trash.remove(); 
     listItem.remove();
     listItemTwo.remove();
-  
+    
+
     // Removing amounts from the expense array 
     expenseArray.pop(Number(listItemTwo.value));
 
     totalExpense = 0
     for (i=0; i<expenseArray.length; i++){
       totalExpense += expenseArray[i];
-    }
+    };
+    calcExpenses();
+  });
+  
+};
 
-    totalExpenseOutput.textContent = Number(totalExpense);
-    let budgetTotal = Number(budgetOutput.textContent);
-    let expenseTotal = Number(totalExpenseOutput.textContent);
-    let result = budgetTotal - expenseTotal;
+function addToExpenseArray() {
+  //Adding amounts to the expense array 
+expenseArray.push(Number(amountInput.value));
 
-  totalBalanceOutput.textContent = result;
+totalExpense = 0
+    for (i=0; i<expenseArray.length; i++){
+      totalExpense += expenseArray[i];
+    };
+    calcExpenses();
+};
+
+
+  // Add amount to object (not working - trying to refactor on separate branch)
+    let expenseObject = {
+      id: 11111,
+      title: itemInput.value,
+      amount: amountInput.value,
+    };
+    expenseObject.id ++;
+
+
+
+// event listeners for budget button
+
+budgetButton.addEventListener('click', () => { 
+  budgetFunc();
+  calcBalance();
 });
+
+
+// Event listener for section three and four
+expenseButton.addEventListener('click', () => { 
+  addToExpenseList();
+  addToExpenseArray();
+  calcBalance();
 
   // reset inputs to empty strings
   itemInput.value="";
-  amountInput.value="";    
-
+  amountInput.value="";  
 });
 
 
 
-
+  
 
 
 
